@@ -311,6 +311,9 @@ case ${host} in
 *-*-vxworks*)
   tmake_file=t-vxworks
   ;;
+*-*-helenos*)
+  extra_parts="crtbegin.o crtend.o"
+  ;;
 *-*-elf)
   extra_parts="crtbegin.o crtend.o"
   ;;
@@ -330,7 +333,7 @@ i[34567]86-*-mingw* | x86_64-*-mingw*)
 esac
 
 case ${host} in
-aarch64*-*-elf | aarch64*-*-rtems*)
+aarch64*-*-elf | aarch64*-*-rtems* | aarch64*-*-helenos*)
 	extra_parts="$extra_parts crtbegin.o crtend.o crti.o crtn.o"
 	extra_parts="$extra_parts crtfastmath.o"
 	tmake_file="${tmake_file} ${cpu_type}/t-aarch64"
@@ -421,11 +424,11 @@ arm*-*-phoenix*)
 	extra_parts="crtbegin.o crtend.o crti.o crtn.o"
 	unwind_header=config/arm/unwind-arm.h
 	;;
-arm*-*-eabi* | arm*-*-symbianelf* | arm*-*-rtems*)
+arm*-*-eabi* | arm*-*-symbianelf* | arm*-*-rtems* | arm*-*-helenos*)
 	tmake_file="${tmake_file} arm/t-arm arm/t-elf t-fixedpoint-gnu-prefix"
 	tm_file="$tm_file arm/bpabi-lib.h"
 	case ${host} in
-	arm*-*-eabi* | arm*-*-rtems*)
+	arm*-*-eabi* | arm*-*-rtems* | arm*-*-helenos*)
 	  tmake_file="${tmake_file} arm/t-bpabi t-crtfm"
 	  extra_parts="crtbegin.o crtend.o crti.o crtn.o"
 	  ;;
@@ -583,10 +586,10 @@ x86_64-*-darwin*)
 i[34567]86-*-elfiamcu)
 	tmake_file="$tmake_file i386/t-crtstuff t-softfp-sfdftf i386/32/t-softfp i386/32/t-iamcu i386/t-softfp t-softfp t-dfprules"
 	;;
-i[34567]86-*-elf*)
+i[34567]86-*-elf* | i[34567]86-*-helenos*)
 	tmake_file="$tmake_file i386/t-crtstuff t-crtstuff-pic t-libgcc-pic"
 	;;
-x86_64-*-elf* | x86_64-*-rtems*)
+x86_64-*-elf* | x86_64-*-rtems* | x86_64-*-helenos*)
 	tmake_file="$tmake_file i386/t-crtstuff t-crtstuff-pic t-libgcc-pic"
 	;;
 i[34567]86-*-dragonfly*)
@@ -758,7 +761,7 @@ x86_64-*-mingw*)
 		extra_parts="$extra_parts vtv_start.o vtv_end.o vtv_start_preinit.o vtv_end_preinit.o"
 	fi
 	;;
-ia64*-*-elf*)
+ia64*-*-elf* | ia64*-*-helenos*)
 	extra_parts="$extra_parts crtbeginS.o crtendS.o crtfastmath.o"
 	tmake_file="ia64/t-ia64 ia64/t-ia64-elf ia64/t-eh-ia64 t-crtfm t-softfp-tf ia64/t-softfp t-softfp ia64/t-softfp-compat"
 	;;
@@ -900,19 +903,19 @@ mipsisa64sb1-*-elf* | mipsisa64sb1el-*-elf*)
 	tmake_file="$tmake_file mips/t-elf mips/t-crtstuff mips/t-mips16"
 	extra_parts="$extra_parts crti.o crtn.o"
 	;;
-mips-*-elf* | mipsel-*-elf*)
+mips-*-elf* | mipsel-*-elf* | mips-*-helenos* | mipsel-*-helenos*)
 	tmake_file="$tmake_file mips/t-elf mips/t-crtstuff mips/t-mips16"
 	extra_parts="$extra_parts crti.o crtn.o"
 	;;
-mipsr5900-*-elf* | mipsr5900el-*-elf*)
+mipsr5900-*-elf* | mipsr5900el-*-elf* | mipsr5900-*-helenos* | mipsr5900el-*-helenos*)
 	tmake_file="$tmake_file mips/t-elf mips/t-crtstuff"
 	extra_parts="$extra_parts crti.o crtn.o"
 	;;
-mips64-*-elf* | mips64el-*-elf*)
+mips64-*-elf* | mips64el-*-elf* | mips64-*-helenos* | mips64el-*-helenos*)
 	tmake_file="$tmake_file mips/t-elf mips/t-crtstuff mips/t-mips16"
 	extra_parts="$extra_parts crti.o crtn.o"
 	;;
-mips64r5900-*-elf* | mips64r5900el-*-elf*)
+mips64r5900-*-elf* | mips64r5900el-*-elf* | mips64r5900-*-helenos* | mips64r5900el-*-helenos*)
 	tmake_file="$tmake_file mips/t-elf mips/t-crtstuff"
 	extra_parts="$extra_parts crti.o crtn.o"
 	;;
@@ -1024,7 +1027,7 @@ powerpc-*-eabisim*)
 	tmake_file="${tmake_file} rs6000/t-ppccomm rs6000/t-crtstuff t-crtstuff-pic t-fdpbit"
 	extra_parts="$extra_parts crtbegin.o crtend.o crtbeginS.o crtendS.o crtbeginT.o ecrti.o ecrtn.o ncrti.o ncrtn.o"
 	;;
-powerpc-*-elf*)
+powerpc-*-elf* | powerpc-*-helenos*)
 	tmake_file="${tmake_file} rs6000/t-ppccomm rs6000/t-savresfgpr rs6000/t-crtstuff t-crtstuff-pic t-fdpbit"
 	extra_parts="$extra_parts crtbeginS.o crtendS.o crtbeginT.o ecrti.o ecrtn.o ncrti.o ncrtn.o"
 	;;
@@ -1085,7 +1088,7 @@ powerpc-wrs-vxworks|powerpc-wrs-vxworksae|powerpc-wrs-vxworksmils)
 powerpc-*-lynxos*)
 	tmake_file="$tmake_file rs6000/t-lynx t-fdpbit"
 	;;
-powerpcle-*-elf*)
+powerpcle-*-elf* | powerpcle-*-helenos*)
 	tmake_file="${tmake_file} rs6000/t-ppccomm rs6000/t-crtstuff t-crtstuff-pic t-fdpbit"
 	extra_parts="$extra_parts crtbeginS.o crtendS.o crtbeginT.o ecrti.o ecrtn.o ncrti.o ncrtn.o"
 	;;
@@ -1219,7 +1222,7 @@ sparc-*-linux*)		# SPARC's running GNU/Linux, libc6
 	extra_parts="$extra_parts crtfastmath.o"
 	md_unwind_header=sparc/linux-unwind.h
 	;;
-sparc-*-rtems*)
+sparc-*-rtems* | sparc-*-helenos*)
 	tmake_file="$tmake_file sparc/t-elf sparc/t-softmul t-crtfm t-fdpbit"
 	extra_parts="$extra_parts crti.o crtn.o crtfastmath.o"
 	;;
@@ -1228,7 +1231,7 @@ sparc*-*-solaris2*)
 	extra_parts="$extra_parts crtfastmath.o"
 	md_unwind_header=sparc/sol2-unwind.h
 	;;
-sparc64-*-elf*)
+sparc64-*-elf* | sparc64-*-helenos*)
 	tmake_file="${tmake_file} t-crtfm"
 	extra_parts="$extra_parts crti.o crtn.o crtfastmath.o"
 	;;
