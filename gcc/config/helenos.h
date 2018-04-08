@@ -69,6 +69,12 @@ along with GCC; see the file COPYING3.  If not see
 #define USE_LD_AS_NEEDED 1
 #endif
 
+/* HelenOS doesn't support executable stack,
+ * and doesn't understand PT_GNU_STACK header.
+ */
+#undef NEED_INDICATE_EXEC_STACK
+#define NEED_INDICATE_EXEC_STACK 0
+
 /* Pretend we have everything glibc has. */
 #undef TARGET_LIBC_HAS_FUNCTION
 #define TARGET_LIBC_HAS_FUNCTION gnu_libc_has_function
