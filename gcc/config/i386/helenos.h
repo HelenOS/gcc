@@ -42,5 +42,10 @@ along with GCC; see the file COPYING3.  If not see
 #undef TARGET_TLS_DIRECT_SEG_REFS_DEFAULT
 #define TARGET_TLS_DIRECT_SEG_REFS_DEFAULT 0
 
-#define GNU_USER_DYNAMIC_LINKER HELENOS_DYNAMIC_LINKER
-#define GNU_USER_LINK_EMULATION "elf_i386"
+#undef	LINK_SPEC
+#define LINK_SPEC "%{shared:-shared} \
+  %{!shared: \
+    %{!static: \
+      %{rdynamic:-export-dynamic} \
+      -dynamic-linker %(dynamic_linker)} \
+      %{static:-static}}"
