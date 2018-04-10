@@ -827,6 +827,7 @@ case ${target} in
   gas=yes
   gnu_ld=yes
   default_use_cxa_atexit=yes
+  native_system_header_dir=/include
   use_collect2=no
   ;;
 *-*-rtems*)
