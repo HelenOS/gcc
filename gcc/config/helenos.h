@@ -34,10 +34,9 @@ along with GCC; see the file COPYING3.  If not see
 #define ENDFILE_SPEC ""
 #undef  LIB_SPEC
 #define LIB_SPEC ""
+
 #undef LINK_EH_SPEC
-#define LINK_EH_SPEC ""
-#undef LINK_GCC_C_SEQUENCE_SPEC
-#define LINK_GCC_C_SEQUENCE_SPEC ""
+#define LINK_EH_SPEC "%{!static:--eh-frame-hdr} "
 
 #undef CPLUSPLUS_CPP_SPEC
 #define CPLUSPLUS_CPP_SPEC "%(cpp)"

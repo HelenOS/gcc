@@ -827,7 +827,7 @@ case ${target} in
   gas=yes
   gnu_ld=yes
   default_use_cxa_atexit=yes
-  native_system_header_dir=/inc
+  use_collect2=no
   ;;
 *-*-rtems*)
   case ${enable_threads} in
@@ -1467,7 +1467,7 @@ x86_64-*-elf*)
 	;;
 x86_64-*-helenos*)
 	tm_file="${tm_file} i386/unix.h i386/att.h i386/x86-64.h dbxelf.h elfos.h"
-	tm_file="${tm_file} i386/helenos.h helenos.h glibc-stdint.h"
+	tm_file="${tm_file} i386/gnu-user.h i386/helenos.h helenos.h glibc-stdint.h"
 	;;
 x86_64-*-rtems*)
 	tm_file="${tm_file} i386/unix.h i386/att.h dbxelf.h elfos.h newlib-stdint.h i386/i386elf.h i386/x86-64.h i386/rtemself.h"
