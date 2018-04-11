@@ -54,9 +54,7 @@ along with GCC; see the file COPYING3.  If not see
   %{!shared: \
     %{!static: \
       %{rdynamic:-export-dynamic} \
-      %{mabi=n32: -dynamic-linker " "/lib/ldn32.so.0" "} \
-      %{mabi=64: -dynamic-linker " HELENOS_DYNAMIC_LINKER64 "} \
-      %{mabi=32: -dynamic-linker " HELENOS_DYNAMIC_LINKER32 "}} \
+      -no-dynamic-linker \
     %{static}} \
   %{mabi=n32:-m" GNU_USER_LINK_EMULATIONN32 "} \
   %{mabi=64:-m" GNU_USER_LINK_EMULATION64 "} \

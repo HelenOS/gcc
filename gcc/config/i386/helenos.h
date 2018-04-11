@@ -47,5 +47,5 @@ along with GCC; see the file COPYING3.  If not see
   %{!shared: \
     %{!static: \
       %{rdynamic:-export-dynamic} \
-      -dynamic-linker %(dynamic_linker)} \
+      -no-dynamic-linker} \
       %{static:-static}}"

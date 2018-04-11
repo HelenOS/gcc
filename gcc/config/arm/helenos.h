@@ -45,7 +45,7 @@ along with GCC; see the file COPYING3.  If not see
    %{symbolic:-Bsymbolic} \
    %{!static: \
      %{rdynamic:-export-dynamic} \
-     %{!shared:-dynamic-linker " HELENOS_DYNAMIC_LINKER "}} \
+     %{!shared:-no-dynamic-linker}} \
    -X \
    -EL" \
    SUBTARGET_EXTRA_LINK_SPEC

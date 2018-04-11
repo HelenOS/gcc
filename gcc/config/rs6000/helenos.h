@@ -53,7 +53,7 @@ along with GCC; see the file COPYING3.  If not see
 #undef LINK_SPEC
 #define LINK_SPEC " -m elf32ppc %{!shared: %{!static: \
   %{rdynamic:-export-dynamic} \
-  -dynamic-linker " HELENOS_DYNAMIC_LINKER "}}"
+  -no-dynamic-linker }}"
 
 /* For backward compatibility.  */
 #undef  DRAFT_V4_STRUCT_RET

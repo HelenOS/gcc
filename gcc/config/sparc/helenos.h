@@ -48,7 +48,7 @@ along with GCC; see the file COPYING3.  If not see
   %{!shared: \
     %{!static: \
       %{rdynamic:-export-dynamic} \
-      -dynamic-linker " HELENOS_DYNAMIC_LINKER64 "} \
+      -no-dynamic-linker} \
     %{static:-static}} \
 %{!mno-relax:%{!r:-relax}} \
 "

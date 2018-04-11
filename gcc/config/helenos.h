@@ -81,11 +81,6 @@ along with GCC; see the file COPYING3.  If not see
 /* FIXME: Not sure what this does or why we want this. */
 #undef TARGET_POSIX_IO
 
-#define HELENOS_DYNAMIC_LINKER "/lib/ld.so.0"
-#define HELENOS_DYNAMIC_LINKER32 "/lib/ld.so.0"
-#define HELENOS_DYNAMIC_LINKER64 "/lib/ld64.so.0"
-#define HELENOS_DYNAMIC_LINKERX32 "/lib/ldx32.so.0"
-
 #define HELENOS_CPP_BUILTINS()						\
     do {								\
 	builtin_define ("__helenos__");					\
