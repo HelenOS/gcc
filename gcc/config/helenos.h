@@ -104,11 +104,9 @@ along with GCC; see the file COPYING3.  If not see
 #undef STACK_CHECK_MOVING_SP
 #undef STACK_CHECK_STATIC_BUILTIN
 
-/* Use a function call on all architectures and let libc sort it out. */
-#define CLEAR_INSN_CACHE(begin, end) { \
-	extern void __clear_cache(void *, void *); \
-	__clear_cache(begin, end); \
-}
+/* Do not build __clear_cache() in libgcc. We'll handle the call in libc. */
+#undef L_clear_cache
+#define CLEAR_INSN_CACHE(BEG, END) not_used
 
 /* There is little reason for basic types to be inconsistent across architectures. */
 
