@@ -54,7 +54,7 @@ along with GCC; see the file COPYING3.  If not see
   %{!shared: \
     %{!static: \
       %{rdynamic:-export-dynamic} \
-      -no-dynamic-linker } \
+      -no-dynamic-linker} \
     %{static}} \
   %{mabi=n32:-m" GNU_USER_LINK_EMULATIONN32 "} \
   %{mabi=64:-m" GNU_USER_LINK_EMULATION64 "} \
