@@ -1481,6 +1481,7 @@ x86_64-*-elf*)
 	tm_file="${tm_file} i386/unix.h i386/att.h dbxelf.h elfos.h newlib-stdint.h i386/i386elf.h i386/x86-64.h"
 	;;
 x86_64-*-helenos*)
+	tmake_file="${tmake_file} i386/t-x86_64-helenos"
 	tm_file="${tm_file} i386/unix.h i386/att.h i386/x86-64.h dbxelf.h elfos.h"
 	tm_file="${tm_file} glibc-stdint.h i386/helenos.h helenos.h"
 	;;
