@@ -32,7 +32,7 @@ along with GCC; see the file COPYING3.  If not see
 #define ARM_DEFAULT_ABI ARM_ABI_AAPCS_LINUX
 
 #define TARGET_ENDIAN_OPTION     "mlittle-endian"
-#define TARGET_LINKER_EMULATION  "armelf_helenos"
+#define TARGET_LINKER_EMULATION  "armelf_hosted"
 
 #undef  SUBTARGET_EXTRA_LINK_SPEC
 #define SUBTARGET_EXTRA_LINK_SPEC " -m " TARGET_LINKER_EMULATION
