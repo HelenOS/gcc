@@ -26,10 +26,12 @@ along with GCC; see the file COPYING3.  If not see
 #undef  TARGET_DEFAULT_FLOAT_ABI
 #define TARGET_DEFAULT_FLOAT_ABI ARM_FLOAT_ABI_SOFT
 
-/* We default to the "aapcs-linux" ABI so that enums are int-sized by
-   default.  */
 #undef  ARM_DEFAULT_ABI
-#define ARM_DEFAULT_ABI ARM_ABI_AAPCS_LINUX
+#define ARM_DEFAULT_ABI ARM_ABI_AAPCS
+
+/* Don't use short enums by default. */
+#undef ARM_DEFAULT_SHORT_ENUMS
+#define ARM_DEFAULT_SHORT_ENUMS 0
 
 #define TARGET_ENDIAN_OPTION     "mlittle-endian"
 #define TARGET_LINKER_EMULATION  "armelf_hosted"
