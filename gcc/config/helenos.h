@@ -48,18 +48,6 @@ along with GCC; see the file COPYING3.  If not see
 #undef CPP_SPEC
 #define CPP_SPEC "-D_REENTRANT"
 
-/* SUBTARGET_FRAME_POINTER_REQUIRED somehow doesn't work on i386.
- * Am I doing this right?
- */
-#define HELENOS_DRIVER_COMMON_SPECS "-fno-omit-frame-pointer"
-
-#ifndef HELENOS_DRIVER_ARCH_SPECS
-#define HELENOS_DRIVER_ARCH_SPECS ""
-#endif
-
-#undef  DRIVER_SELF_SPECS
-#define DRIVER_SELF_SPECS  HELENOS_DRIVER_COMMON_SPECS, HELENOS_DRIVER_ARCH_SPECS
-
 /* Don't assume anything about the header files.  */
 #define NO_IMPLICIT_EXTERN_C
 

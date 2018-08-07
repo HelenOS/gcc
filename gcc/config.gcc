@@ -1132,7 +1132,7 @@ arm*-*-freebsd*)                # ARM FreeBSD EABI
 	;;
 arm*-*-helenos*)	# HelenOS on ARM using EABI, no big endian support
 	tm_file="dbxelf.h elfos.h arm/elf.h arm/bpabi.h arm/aout.h vxworks-dummy.h arm/arm.h helenos-stdint.h arm/helenos.h helenos.h"
-	tmake_file="${tmake_file} arm/t-arm arm/t-arm-elf arm/t-bpabi"
+	tmake_file="${tmake_file} arm/t-arm arm/t-arm-elf arm/t-bpabi arm/t-helenos"
 	target_cpu_cname="arm10tdmi"
 	# The EABI requires the use of __cxa_atexit.
 	default_use_cxa_atexit=yes

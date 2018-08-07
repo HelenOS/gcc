@@ -1256,7 +1256,7 @@ sparc-*-linux*)		# SPARC's running GNU/Linux, libc6
 	extra_parts="$extra_parts crtfastmath.o"
 	md_unwind_header=sparc/linux-unwind.h
 	;;
-sparc-*-rtems* | sparc-*-helenos*)
+sparc-*-rtems*)
 	tmake_file="$tmake_file sparc/t-elf sparc/t-softmul t-crtfm t-fdpbit"
 	extra_parts="$extra_parts crti.o crtn.o crtfastmath.o"
 	;;
