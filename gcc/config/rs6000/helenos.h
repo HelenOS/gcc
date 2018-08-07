@@ -77,8 +77,12 @@ along with GCC; see the file COPYING3.  If not see
 #endif
 
 /* Additional HelenOS flags. */
-#define HELENOS_DRIVER_ARCH_SPECS  "%{mfpu=none: %<mfpu=* \
- 	%<msingle-float %<mdouble-float}", "-mcpu=powerpc", "-msoft-float"
+#define HELENOS_DRIVER_SELF_SPECS \
+	"-mcpu=powerpc", "-msoft-float"
+
+#undef DRIVER_SELF_SPECS \
+	"%{mfpu=none: %<mfpu=* %<msingle-float %<mdouble-float}" \
+	HELENOS_DRIVER_SELF_SPECS
 
 /* Static stack checking is supported by means of probes.  */
 #define STACK_CHECK_STATIC_BUILTIN 1
