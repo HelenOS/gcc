@@ -51,9 +51,9 @@ along with GCC; see the file COPYING3.  If not see
 #endif
 
 #undef LINK_SPEC
-#define LINK_SPEC " -m elf32ppc %{!shared: %{!static: \
+#define LINK_SPEC " -m elf32ppc %{shared:-shared} %{!shared: %{!static: \
   %{rdynamic:-export-dynamic} \
-  -no-dynamic-linker }}"
+  -no-dynamic-linker} %{static:-static}}"
 
 /* For backward compatibility.  */
 #undef  DRAFT_V4_STRUCT_RET
@@ -80,7 +80,8 @@ along with GCC; see the file COPYING3.  If not see
 #define HELENOS_DRIVER_SELF_SPECS \
 	"-mcpu=powerpc", "-msoft-float"
 
-#undef DRIVER_SELF_SPECS \
+#undef DRIVER_SELF_SPECS
+#define DRIVER_SELF_SPECS \
 	"%{mfpu=none: %<mfpu=* %<msingle-float %<mdouble-float}" \
 	HELENOS_DRIVER_SELF_SPECS
 
