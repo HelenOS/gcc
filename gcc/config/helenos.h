@@ -113,3 +113,17 @@ along with GCC; see the file COPYING3.  If not see
 #undef SIZE_TYPE
 #define SIZE_TYPE UINTPTR_TYPE
 
+/* Extra defines needed for some targets. */
+#ifndef GNU_USER_TARGET_CC1_SPEC
+#define GNU_USER_TARGET_CC1_SPEC ""
+#endif
+#ifndef GNU_USER_TARGET_LIB_SPEC
+#define GNU_USER_TARGET_LIB_SPEC ""
+#endif
+#ifndef GNU_USER_TARGET_STARTFILE_SPEC
+#define GNU_USER_TARGET_STARTFILE_SPEC ""
+#endif
+#ifndef GNU_USER_TARGET_ENDFILE_SPEC ""
+#define GNU_USER_TARGET_ENDFILE_SPEC ""
+#endif
+
