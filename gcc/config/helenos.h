@@ -49,7 +49,7 @@ along with GCC; see the file COPYING3.  If not see
 #define CPP_SPEC "-D_REENTRANT"
 
 /* Don't assume anything about the header files.  */
-#define NO_IMPLICIT_EXTERN_C
+/* #define NO_IMPLICIT_EXTERN_C */
 
 /* Use --as-needed -lgcc_s for eh support.  */
 #ifdef HAVE_LD_AS_NEEDED
