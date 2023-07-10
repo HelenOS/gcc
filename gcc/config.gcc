@@ -1184,7 +1184,7 @@ aarch64*-*-netbsd*)
 	extra_options="${extra_options} netbsd.opt netbsd-elf.opt"
 	;;
 aarch64*-*-helenos*)
-	tm_file="${tm_file} dbxelf.h elfos.h aarch64/aarch64-elf.h"
+	tm_file="${tm_file} elfos.h aarch64/aarch64-elf.h"
 	tm_file="${tm_file} helenos-stdint.h aarch64/aarch64-helenos.h helenos.h"
 	tmake_file="${tmake_file} aarch64/t-aarch64 aarch64/t-aarch64-helenos"
 	;;
@@ -1328,7 +1328,7 @@ arm*-*-freebsd*)                # ARM FreeBSD EABI
 	with_tls=${with_tls:-gnu}
 	;;
 arm*-*-helenos*)	# HelenOS on ARM using EABI, no big endian support
-	tm_file="dbxelf.h elfos.h arm/elf.h arm/bpabi.h arm/aout.h vxworks-dummy.h arm/arm.h helenos-stdint.h arm/helenos.h helenos.h"
+	tm_file="elfos.h arm/elf.h arm/bpabi.h arm/aout.h vxworks-dummy.h arm/arm.h helenos-stdint.h arm/helenos.h helenos.h"
 	tmake_file="${tmake_file} arm/t-arm arm/t-arm-elf arm/t-bpabi arm/t-helenos"
 	target_cpu_cname="arm7tdmi"
 	# The EABI requires the use of __cxa_atexit.
@@ -1886,7 +1886,7 @@ i[34567]86-*-elf*)
 	tm_file="${tm_file} i386/unix.h i386/att.h elfos.h newlib-stdint.h i386/i386elf.h"
 	;;
 i[34567]86-*-helenos*)
-	tm_file="${tm_file} i386/unix.h i386/att.h dbxelf.h elfos.h"
+	tm_file="${tm_file} i386/unix.h i386/att.h elfos.h"
 	tm_file="${tm_file} helenos-stdint.h i386/helenos.h helenos.h"
 	;;
 x86_64-*-elf*)
@@ -1894,7 +1894,7 @@ x86_64-*-elf*)
 	;;
 x86_64-*-helenos*)
 	tmake_file="${tmake_file} i386/t-x86_64-helenos"
-	tm_file="${tm_file} i386/unix.h i386/att.h i386/x86-64.h dbxelf.h elfos.h"
+	tm_file="${tm_file} i386/unix.h i386/att.h i386/x86-64.h elfos.h"
 	tm_file="${tm_file} helenos-stdint.h i386/helenos.h helenos.h"
 	;;
 x86_64-*-rtems*)
@@ -2262,7 +2262,7 @@ ia64*-*-elf*)
 	fi
 	;;
 ia64*-*-helenos*)
-	tm_file="${tm_file} dbxelf.h elfos.h ia64/sysv4.h"
+	tm_file="${tm_file} elfos.h ia64/sysv4.h"
 	tm_file="${tm_file} helenos-stdint.h ia64/helenos.h helenos.h"
 	target_cpu_default="MASK_GNU_AS|MASK_GNU_LD"
 	tmake_file="${tmake_file} ia64/t-ia64"
@@ -2565,7 +2565,7 @@ mips*-mti-linux*)
 	gas=yes
 	;;
 mips*-*-helenos*)				# HelenOS MIPS, either endian.
-	tm_file="dbxelf.h elfos.h ${tm_file} helenos-stdint.h mips/helenos.h helenos.h"
+	tm_file="elfos.h ${tm_file} helenos-stdint.h mips/helenos.h helenos.h"
 	case ${target} in
 		mipsisa32r6*)
 			default_mips_arch=mips32r6
@@ -3029,18 +3029,8 @@ powerpc-*-rtems*)
 	extra_options="${extra_options} rs6000/sysv4.opt rs6000/linux64.opt"
 	tmake_file="${tmake_file} rs6000/t-fprules rs6000/t-rtems rs6000/t-ppccomm"
 	;;
-powerpc*-*-linux*spe*)
-	tm_file="${tm_file} dbxelf.h elfos.h gnu-user.h freebsd-spec.h powerpcspe/sysv4.h"
-	extra_options="${extra_options} powerpcspe/sysv4.opt"
-	tmake_file="${tmake_file} powerpcspe/t-fprules powerpcspe/t-ppccomm"
-	extra_objs="$extra_objs powerpcspe-linux.o"
-	maybe_biarch=
-	tm_file="${tm_file} powerpcspe/linux.h glibc-stdint.h"
-	tmake_file="${tmake_file} powerpcspe/t-ppcos powerpcspe/t-linux"
-	tm_file="${tm_file} powerpcspe/linuxspe.h powerpcspe/e500.h"
-	;;
 powerpc-*-helenos*)
-	tm_file="${tm_file} dbxelf.h elfos.h rs6000/sysv4.h"
+	tm_file="${tm_file} elfos.h rs6000/sysv4.h"
 	tm_file="${tm_file} helenos-stdint.h rs6000/helenos.h helenos.h"
 	extra_options="${extra_options} rs6000/sysv4.opt"
 	tmake_file="rs6000/t-fprules rs6000/t-ppccomm rs6000/t-ppcos"
@@ -3497,7 +3487,7 @@ sparc64-*-rtems*)
 	tmake_file="${tmake_file} sparc/t-sparc sparc/t-rtems-64"
 	;;
 sparc64-*-helenos*)
-	tm_file="${tm_file} dbxelf.h elfos.h sparc/sysv4.h sparc/default64.h sparc/tso.h helenos-stdint.h sparc/helenos.h helenos.h"
+	tm_file="${tm_file} elfos.h sparc/sysv4.h sparc/default64.h sparc/tso.h helenos-stdint.h sparc/helenos.h helenos.h"
 	extra_options="${extra_options}"
 	tmake_file="${tmake_file} sparc/t-sparc"
 	;;
