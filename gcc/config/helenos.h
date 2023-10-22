@@ -26,7 +26,6 @@ along with GCC; see the file COPYING3.  If not see
  * for libgcc build.
  */
 
-
 /* XXX: We defer these to the textual specfiles. */
 #undef  STARTFILE_SPEC
 #define STARTFILE_SPEC ""
@@ -48,9 +47,6 @@ along with GCC; see the file COPYING3.  If not see
 #undef CPP_SPEC
 #define CPP_SPEC "-D_REENTRANT"
 
-/* Don't assume anything about the header files.  */
-/* #define NO_IMPLICIT_EXTERN_C */
-
 /* Use --as-needed -lgcc_s for eh support.  */
 #ifdef HAVE_LD_AS_NEEDED
 #define USE_LD_AS_NEEDED 1
@@ -66,7 +62,7 @@ along with GCC; see the file COPYING3.  If not see
 #undef TARGET_LIBC_HAS_FUNCTION
 #define TARGET_LIBC_HAS_FUNCTION gnu_libc_has_function
 
-/* FIXME: Not sure what this does or why we want this. */
+/* We don't generally support POSIX IO functions, avoid using them. */
 #undef TARGET_POSIX_IO
 
 #ifndef TARGET_SUB_OS_CPP_BUILTINS
@@ -94,7 +90,7 @@ along with GCC; see the file COPYING3.  If not see
 
 /* Do not build __clear_cache() in libgcc. We'll handle the call in libc. */
 #undef L_clear_cache
-#define CLEAR_INSN_CACHE(BEG, END) not_used
+#undef CLEAR_INSN_CACHE
 
 /* There is little reason for basic types to be inconsistent across architectures. */
 
@@ -112,18 +108,3 @@ along with GCC; see the file COPYING3.  If not see
 #define PTRDIFF_TYPE INTPTR_TYPE
 #undef SIZE_TYPE
 #define SIZE_TYPE UINTPTR_TYPE
-
-/* Extra defines needed for some targets. */
-#ifndef GNU_USER_TARGET_CC1_SPEC
-#define GNU_USER_TARGET_CC1_SPEC ""
-#endif
-#ifndef GNU_USER_TARGET_LIB_SPEC
-#define GNU_USER_TARGET_LIB_SPEC ""
-#endif
-#ifndef GNU_USER_TARGET_STARTFILE_SPEC
-#define GNU_USER_TARGET_STARTFILE_SPEC ""
-#endif
-#ifndef GNU_USER_TARGET_ENDFILE_SPEC ""
-#define GNU_USER_TARGET_ENDFILE_SPEC ""
-#endif
-

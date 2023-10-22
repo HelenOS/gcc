@@ -93,3 +93,8 @@ along with GCC; see the file COPYING3.  If not see
 #define FBSD_STARTFILE_SPEC ""
 #define FBSD_ENDFILE_SPEC ""
 #define FBSD_LIB_SPEC ""
+
+#define GNU_USER_TARGET_CC1_SPEC ""
+#define GNU_USER_TARGET_LIB_SPEC ""
+#define GNU_USER_TARGET_STARTFILE_SPEC ""
+#define GNU_USER_TARGET_ENDFILE_SPEC ""

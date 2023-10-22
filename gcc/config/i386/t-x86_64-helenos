@@ -1,2 +1,5 @@
+# This should allow us to use libgcc in kernel, avoiding the need
+# to roll our own versions of functions implemented by it.
+
 MULTILIB_OPTIONS += mno-red-zone
 MULTILIB_DIRNAMES += no-red-zone
