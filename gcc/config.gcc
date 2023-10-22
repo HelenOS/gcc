@@ -181,7 +181,7 @@
 #			the --with-sysroot configure option or the
 #			--sysroot command line option is used this
 #			will be relative to the sysroot.
-# target_type_format_char
+# target_type_format_char 
 # 			The default character to be used for formatting
 #			the attribute in a
 #			.type symbol_name, ${t_t_f_c}<property>
@@ -1184,9 +1184,10 @@ aarch64*-*-netbsd*)
 	extra_options="${extra_options} netbsd.opt netbsd-elf.opt"
 	;;
 aarch64*-*-helenos*)
-	tm_file="${tm_file} elfos.h aarch64/aarch64-elf.h"
+	tm_file="${tm_file} elfos.h aarch64/aarch64-elf.h aarch64/aarch64-errata.h"
 	tm_file="${tm_file} glibc-stdint.h aarch64/aarch64-helenos.h helenos.h"
 	tmake_file="${tmake_file} aarch64/t-aarch64 aarch64/t-aarch64-helenos"
+	tm_defines="${tm_defines}  TARGET_DEFAULT_ASYNC_UNWIND_TABLES=1"
 	;;
 aarch64*-*-linux*)
 	tm_file="${tm_file} elfos.h gnu-user.h linux.h glibc-stdint.h"
