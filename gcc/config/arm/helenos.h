@@ -31,10 +31,6 @@ along with GCC; see the file COPYING3.  If not see
 #define ARM_DEFAULT_SHORT_ENUMS 0
 
 #define TARGET_ENDIAN_OPTION     "mlittle-endian"
-#define TARGET_LINKER_EMULATION  "armelf_hosted"
-
-#undef  SUBTARGET_EXTRA_LINK_SPEC
-#define SUBTARGET_EXTRA_LINK_SPEC " -m " TARGET_LINKER_EMULATION
 
 #undef LINK_SPEC
 #define LINK_SPEC EABI_LINK_SPEC "%{h*} \
@@ -86,4 +82,3 @@ along with GCC; see the file COPYING3.  If not see
  */
 #define HELENOS_DRIVER_ARCH_SPECS \
     MCPU_MTUNE_NATIVE_SPECS TARGET_MODE_SPECS "-ffixed-r9 -mtp=soft"
-
