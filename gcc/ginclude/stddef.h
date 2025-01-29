@@ -453,8 +453,10 @@ typedef struct {
 #endif /* C23.  */
 
 #if defined __STDC_VERSION__ && __STDC_VERSION__ > 201710L
+#ifndef __STDC_VERSION_STDDEF_H__
 #define unreachable() (__builtin_unreachable ())
 #define __STDC_VERSION_STDDEF_H__	202311L
+#endif
 #endif
 
 #endif /* _STDDEF_H was defined this time */
